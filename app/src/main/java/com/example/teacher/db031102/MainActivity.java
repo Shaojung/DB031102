@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-    android.app.FragmentTransaction ft = getFragmentManager().beginTransaction();
+    android.app.FragmentTransaction ft;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -14,12 +14,15 @@ public class MainActivity extends AppCompatActivity {
     }
     public void clickA(View v)
     {
-        // ft.replace(R.id.contentLayout, new AFragment(), "f_a");
-        ft.add(R.id.contentLayout, new AFragment());
-
+        ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.contentLayout, new AFragment(), "f_a");
+        // ft.add(R.id.contentLayout, new AFragment());
+        ft.commit();
     }
     public void clickB(View v)
     {
+        ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.contentLayout, new BFragment(), "f_b");
+        ft.commit();
     }
 }
